@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html> <!-- 빨간 줄 이지만 오류 없음 -->
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>파이보</title>
+</head>
+<body>
+<!-- 네비게이션바 -->
+{% include 'navbar.html' %}
+<!-- 네비게이션바 End -->
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %} <!-- 각 템플릿에 이 태그들 적용해서 -->
+{% endblock %} <!-- 두 태그 사이에 상속한 템플릿에서 내용을 개별적으로 구현해야 함 -->
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+<!-- jQuery JS -->
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script> <!-- 위의 파일을 필요로 하기에 밑에 적어준다 -->
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+</html>

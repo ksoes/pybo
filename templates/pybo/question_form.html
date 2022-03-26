@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <form method="post" class="post-form my-3"> <!-- action속성을 비워놔 다른 기능을 구현할 때도 이 템플릿을 사용할 수 있도록 한다. -->
+        {% csrf_token %}
+        <!-- 오류 표시 -->
+        {% if form.errors %}
+        <div class="alert alert-info" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                    <strong>{{ field.label }}</strong>
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류 표시 End -->
+
+        <!-- 제목 입력 -->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <!-- 제목 입력 End -->
+
+        <!-- 내용 입력 -->
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+        <!-- 내용 입력 End -->
+
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}
